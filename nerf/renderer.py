@@ -958,7 +958,7 @@ class NeRFRenderer(nn.Module):
                 fp.write(f'Ns 0.000000 \n')
                 fp.write(f'map_Kd {name}albedo.png \n')
 
-            img = cv2.imread(os.path.join(path, f'{name}albedo.png'))
+            img = Image.open(os.path.join(path, f'{name}albedo.png'))
             tex = trimesh.visual.TextureVisuals(image=img)
             mesh = trimesh.Trimesh(vertices, triangles, visual=tex, process=False)
             mesh.visual.texture = tex
