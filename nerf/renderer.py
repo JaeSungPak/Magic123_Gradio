@@ -817,6 +817,7 @@ class NeRFRenderer(nn.Module):
         f = torch.from_numpy(triangles).contiguous().int().to(
             self.aabb_train.device)
 
+        import trimesh
         mesh = trimesh.Trimesh(vertices, triangles, process=False) # important, process=True leads to seg fault...
         mesh.export(os.path.join(path, f'mesh.ply'))
 
