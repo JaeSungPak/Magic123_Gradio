@@ -960,8 +960,8 @@ class NeRFRenderer(nn.Module):
 
             im = Image.open(os.path.join(path, f'{name}albedo.png'))
             tex = trimesh.visual.TextureVisuals(image=im)
-            # mesh.visual.texture = tex
             mesh = trimesh.Trimesh(vertices, triangles, process=False) # important, process=True leads to seg fault...
+            mesh.visual.texture = tex
             mesh.export(os.path.join(path, f'mesh.ply'))
 
         _export(v, f)
