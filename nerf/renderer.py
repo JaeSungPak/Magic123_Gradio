@@ -819,7 +819,7 @@ class NeRFRenderer(nn.Module):
 
         import trimesh
         mesh = trimesh.Trimesh(vertices, triangles, process=False) # important, process=True leads to seg fault...
-        mesh.export(os.path.join(path, f'mesh.ply'))
+        mesh.export(os.path.join(path, f'mesh.glb'))
 
         def _export(v, f, h0=2048, w0=2048, ssaa=1, name=''):
             # v, f: torch Tensor
