@@ -962,7 +962,7 @@ class NeRFRenderer(nn.Module):
             tex = trimesh.visual.TextureVisuals(image=im)
             mesh = trimesh.Trimesh(vertices, triangles, process=False) # important, process=True leads to seg fault...
             mesh.visual.texture = tex
-            mesh.export(os.path.join(path, f'mesh.ply'))
+            mesh.export(os.path.join(path, f'mesh.glb'))
 
         _export(v, f)
 
