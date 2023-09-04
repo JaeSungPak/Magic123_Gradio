@@ -818,6 +818,7 @@ class NeRFRenderer(nn.Module):
             self.aabb_train.device)
 
         import trimesh
+        from PIL import Image
         # mesh = trimesh.Trimesh(vertices, triangles, process=False) # important, process=True leads to seg fault...
         # mesh.export(os.path.join(path, f'mesh.ply'))
 
