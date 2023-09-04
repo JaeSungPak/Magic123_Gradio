@@ -963,7 +963,7 @@ class NeRFRenderer(nn.Module):
             mesh = trimesh.Trimesh(vertices, triangles, process=False) # important, process=True leads to seg fault...
             mesh.export(os.path.join(path, f'mesh.ply'))
 
-        # _export(v, f)
+        _export(v, f)
 
     def run(self, rays_o, rays_d, light_d=None, ambient_ratio=1.0, shading='albedo', bg_color=None, perturb=False, **kwargs):
         # rays_o, rays_d: [B, N, 3]
