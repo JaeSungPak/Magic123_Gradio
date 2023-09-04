@@ -817,8 +817,8 @@ class NeRFRenderer(nn.Module):
         f = torch.from_numpy(triangles).contiguous().int().to(
             self.aabb_train.device)
 
-        #mesh = trimesh.Trimesh(vertices, triangles, process=False) # important, process=True leads to seg fault...
-        #mesh.export(os.path.join(path, f'mesh.ply'))
+        mesh = trimesh.Trimesh(vertices, triangles, process=False) # important, process=True leads to seg fault...
+        mesh.export(os.path.join(path, f'mesh.ply'))
 
         def _export(v, f, h0=2048, w0=2048, ssaa=1, name=''):
             # v, f: torch Tensor
@@ -956,7 +956,7 @@ class NeRFRenderer(nn.Module):
                 fp.write(f'Ns 0.000000 \n')
                 fp.write(f'map_Kd {name}albedo.png \n')
 
-        _export(v, f)
+        # _export(v, f)
 
     def run(self, rays_o, rays_d, light_d=None, ambient_ratio=1.0, shading='albedo', bg_color=None, perturb=False, **kwargs):
         # rays_o, rays_d: [B, N, 3]
