@@ -918,7 +918,6 @@ class NeRFRenderer(nn.Module):
             feats[tuple(inpaint_coords.T)] = feats[tuple(search_coords[indices[:, 0]].T)]
 
             feats = cv2.cvtColor(feats, cv2.COLOR_RGB2BGR)
-            tex = feats
 
             # do ssaa after the NN search, in numpy
             if ssaa > 1:
@@ -959,8 +958,8 @@ class NeRFRenderer(nn.Module):
                 fp.write(f'Ns 0.000000 \n')
                 fp.write(f'map_Kd {name}albedo.png \n')
 
-            im = Image.open(os.path.join(path, f'{name}albedo.png'))
-            #tex = trimesh.visual.TextureVisuals(image=im)
+            img = cv2.imread(os.path.join(path, f'{name}albedo.png'))
+            tex = trimesh.visual.TextureVisuals(image=img)
             mesh = trimesh.Trimesh(vertices, triangles, visual=tex, process=False)
             mesh.visual.texture = tex
             mesh.export(os.path.join(path, f'mesh.glb'))
