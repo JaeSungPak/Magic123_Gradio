@@ -819,8 +819,8 @@ class NeRFRenderer(nn.Module):
 
         import trimesh
         from PIL import Image
-        # mesh = trimesh.Trimesh(vertices, triangles, process=False) # important, process=True leads to seg fault...
-        # mesh.export(os.path.join(path, f'mesh.ply'))
+        mesh = trimesh.Trimesh(vertices, triangles, process=False) # important, process=True leads to seg fault...
+        mesh.export(os.path.join(path, f'mesh.ply'))
 
         def _export(v, f, h0=2048, w0=2048, ssaa=1, name=''):
             # v, f: torch Tensor
@@ -957,11 +957,11 @@ class NeRFRenderer(nn.Module):
                 fp.write(f'illum 1 \n')
                 fp.write(f'Ns 0.000000 \n')
                 fp.write(f'map_Kd {name}albedo.png \n')
-
+            
             img = Image.open(os.path.join(path, f'{name}albedo.png'))
             tex = trimesh.visual.TextureVisuals(image=img)
             
-            mesh = trimesh.load(os.path.join(path, f'{name}mesh.obj')) 
+            mesh = trimesh.load(os.path.join(path, f'{name}mesh.ply')) 
             mesh.visual.texture = tex
             mesh.export(os.path.join(path, f'mesh.glb'))
  
