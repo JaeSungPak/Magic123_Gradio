@@ -963,7 +963,7 @@ class NeRFRenderer(nn.Module):
             
             mesh = trimesh.load(os.path.join(path, f'{name}mesh.obj')) 
             mesh.visual.texture = tex
-            mesh.export(os.path.join(path, f'mesh_textured.obj'))
+            mesh.export(os.path.join(path, f'mesh.glb'))
  
         _export(v, f)
 
