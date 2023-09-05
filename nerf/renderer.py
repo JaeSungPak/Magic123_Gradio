@@ -967,12 +967,12 @@ class NeRFRenderer(nn.Module):
 
             img = Image.open(os.path.join(path, f'{name}albedo.png'))
             material = trimesh.visual.texture.SimpleMaterial(image=img)
-            texture = trimesh.visual.TextureVisuals(uv=uv, image=img, material=material)
+            tex = trimesh.visual.TextureVisuals(uv=uv, image=img, material=material)
 
-            mesh = trimesh.Trimesh(vertices=v, visual=texture_visual, validate=True, process=False)
-            #mesh = trimesh.load(os.path.join(path, f'{name}mesh.obj')) 
-            #mesh.visual.texture = tex
-            mesh.export(os.path.join(path, f'mesh.glb'))    
+            mesh = trimesh.load(os.path.join(path, f'{name}mesh.obj')) 
+            mesh.visual.texture = tex
+            mesh.export(os.path.join(path, f'mesh.glb'))
+ 
 
         _export(v, f)
 
