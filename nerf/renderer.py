@@ -970,8 +970,8 @@ class NeRFRenderer(nn.Module):
             texture = trimesh.visual.TextureVisuals(uv=uv, image=img, material=material)
 
             mesh = Trimesh(vertices=vertices, faces=f, visual=texture_visual, validate=True, process=False)
-            mesh = trimesh.load(os.path.join(path, f'{name}mesh.obj')) 
-            mesh.visual.texture = tex
+            #mesh = trimesh.load(os.path.join(path, f'{name}mesh.obj')) 
+            #mesh.visual.texture = tex
             mesh.export(os.path.join(path, f'mesh.glb'))    
 
         _export(v, f)
