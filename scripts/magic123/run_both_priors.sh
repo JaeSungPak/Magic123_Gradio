@@ -35,7 +35,6 @@ step2=$6 # whether to use the second stage
 FILENAME=$(basename $DATA_DIR)
 dataset=$(basename $(dirname $DATA_DIR))
 echo reconstruct $FILENAME under dataset $dataset from folder $DATA_DIR ...
-echo ${DATA_DIR}/${IMAGE_NAME}
 
 if (( ${step1} )); then
     CUDA_VISIBLE_DEVICES=$1 python main.py -O \
