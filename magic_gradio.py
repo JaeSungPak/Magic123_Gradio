@@ -40,4 +40,4 @@ def generate_mesh(input_image):
 
 inputs = gr.inputs.Image(label="Image", type="pil")
 outputs = gr.Model3D(label="3D Mesh", clear_color=[1.0, 1.0, 1.0, 1.0])
-gr.Interface(generate_mesh, inputs, outputs).launch()
+gr.Interface(generate_mesh, inputs, outputs).launch(share=True)
