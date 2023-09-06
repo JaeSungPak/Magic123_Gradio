@@ -363,8 +363,6 @@ if __name__ == '__main__':
     opt.images, opt.ref_radii, opt.ref_polars, opt.ref_azimuths, opt.zero123_ws = [], [], [], [], []
     opt.default_zero123_w = 1
 
-    print(opt.image)
-
     # parameters for image-conditioned generation
     if opt.image is not None or opt.image_config is not None:
         if 'zero123' in opt.guidance:
