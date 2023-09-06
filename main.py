@@ -348,7 +348,7 @@ def _parse_args():
     return args, args_text
 
 
-def run():
+if __name__ == '__main__':
     args, args_text = _parse_args()
     opt = edict(vars(args))
 
