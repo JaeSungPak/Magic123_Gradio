@@ -5,6 +5,7 @@ import subprocess
 from PIL import Image
 import numpy as np
 import shutil
+import main.py
 
 def generate_mesh(input_image):
     input_path = "./input"
@@ -25,7 +26,7 @@ def generate_mesh(input_image):
 
     try:
         completed_process = subprocess.run(cmd_1.split(), check=True, capture_output=True, text=True)
-        completed_process = subprocess.run(cmd_2.split(), check=True, capture_output=True, text=True)
+        #completed_process = subprocess.run(cmd_2.split(), check=True, capture_output=True, text=True)
         print(completed_process.stdout)
     except subprocess.CalledProcessError as e:
         print(f"Error occurred: {e}")
