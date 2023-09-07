@@ -43,7 +43,7 @@ with gr.Blocks() as demo:
             print(e.stdout)
             print(e.stderr)
 
-        output_name = f"./Magic123_Gradio/ㅡㅡout/magic123-nerf-dmtet/magic123_input_nerf_dmtet/mesh/mesh.glb"
+        output_name = f"./Magic123_Gradio/out/magic123-nerf-dmtet/magic123_input_nerf_dmtet/mesh/mesh.glb"
         return output_name
 
     btn.click(generate_mesh, inputs, outputs)
