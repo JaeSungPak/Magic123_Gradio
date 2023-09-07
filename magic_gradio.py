@@ -17,8 +17,8 @@ with gr.Blocks() as demo:
     
     def generate_mesh(input_image, progress=gr.Progress(track_tqdm=True)):
                 
-        input_path = "./input"
-        output_path = "./out"
+        input_path = "./Magic123_Gradio/input"
+        output_path = "./Magic123_Gradio/out"
         image_path = input_path + "/input.png"
         GPU_NUM = "0"
 
@@ -30,8 +30,8 @@ with gr.Blocks() as demo:
         os.mkdir(input_path)
         input_image.save(image_path)
 
-        cmd_1 = f"python preprocess_image.py --path {image_path}"
-        cmd_2 = f"bash scripts/magic123/run_both_priors.sh {GPU_NUM} nerf dmtet {input_path} 1 1"
+        cmd_1 = f"python Magic123_Gradio/preprocess_image.py --path {image_path}"
+        cmd_2 = f"bash Magic123_Gradio/scripts/magic123/run_both_priors.sh {GPU_NUM} nerf dmtet {input_path} 1 1"
 
         try:
             completed_process = subprocess.run(cmd_1.split(), stdout=subprocess.PIPE)
@@ -43,7 +43,7 @@ with gr.Blocks() as demo:
             print(e.stdout)
             print(e.stderr)
 
-        output_name = f"./out/magic123-nerf-dmtet/magic123_input_nerf_dmtet/mesh/mesh.glb"
+        output_name = f"./Magic123_Gradio/ㅡㅡout/magic123-nerf-dmtet/magic123_input_nerf_dmtet/mesh/mesh.glb"
         return output_name
 
     btn.click(generate_mesh, inputs, outputs)
