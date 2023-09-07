@@ -20,5 +20,5 @@ source venv_magic123/bin/activate
 # conda activate magic123
 
 pip3 install torch torchvision
-pip3 install -r requirements.txt
-bash scripts/install_ext.sh
+pip3 install -r Magic123_Gradio/requirements.txt
+bash Magic123_Gradio/scripts/install_ext.sh
