@@ -308,7 +308,7 @@ class DMTetGeometry(torch.nn.Module):
         self.grid_res = grid_res
         self.marching_tets = DMTet()
 
-        tets = np.load('data/tets/{}_tets.npz'.format(self.grid_res))
+        tets = np.load('Magic123_Gradio/data/tets/{}_tets.npz'.format(self.grid_res))
         # for 64/128, [N=36562/277410, 3], in [-0.5, 0.5]^3
         self.verts = torch.tensor(
             tets['vertices'], dtype=torch.float32, device=self.device) * 2

@@ -133,7 +133,7 @@ from midas.model_loader import default_models, load_model
 depth_config={
     "input_path": None,
     "output_path": None,
-    "model_weights": "pretrained/midas/dpt_beit_large_512.pt",
+    "model_weights": "Magic123_Gradio/pretrained/midas/dpt_beit_large_512.pt",
     "model_type": "dpt_beit_large_512",
     "side": False,
     "optimize": False,

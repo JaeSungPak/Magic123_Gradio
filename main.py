@@ -318,9 +318,9 @@ parser.add_argument('--light_phi', type=float, default=0,
 parser.add_argument('--max_spp', type=int, default=1,
                     help="GUI rendering max sample per pixel")
 parser.add_argument('--zero123_config', type=str,
-                    default='./pretrained/zero123/sd-objaverse-finetune-c_concat-256.yaml', help="config file for zero123")
+                    default='./Magic123_Gradio/pretrained/zero123/sd-objaverse-finetune-c_concat-256.yaml', help="config file for zero123")
 parser.add_argument('--zero123_ckpt', type=str,
-                    default='./pretrained/zero123/105000.ckpt', help="ckpt for zero123")
+                    default='./Magic123_Gradio/pretrained/zero123/105000.ckpt', help="ckpt for zero123")
 parser.add_argument('--zero123_grad_scale', type=str, default='angle',
                     help="whether to scale the gradients based on 'angle' or 'None'")
 
