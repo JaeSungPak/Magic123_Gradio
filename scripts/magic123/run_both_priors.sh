@@ -37,7 +37,7 @@ dataset=$(basename $(dirname $DATA_DIR))
 echo reconstruct $FILENAME under dataset $dataset from folder $DATA_DIR ...
 
 if (( ${step1} )); then
-    CUDA_VISIBLE_DEVICES=$1 python main.py -O \
+    CUDA_VISIBLE_DEVICES=$1 python Magic123_Gradio/main.py -O \
         --text "A high-resolution DSLR image of <token>" \
         --sd_version 1.5 \
         --image ${DATA_DIR}/${IMAGE_NAME} \
@@ -57,7 +57,7 @@ if (( ${step1} )); then
 fi
 
 if (( ${step2} )); then
-    CUDA_VISIBLE_DEVICES=$1 python main.py -O \
+    CUDA_VISIBLE_DEVICES=$1 python Magic123_Gradio/main.py -O \
         --text "A high-resolution DSLR image of <token>" \
         --sd_version 1.5 \
         --image ${DATA_DIR}/${IMAGE_NAME} \
