@@ -20,7 +20,7 @@ with gr.Blocks() as demo:
         input_path = "./Magic123_Gradio/input"
         output_path = "./Magic123_Gradio/out"
         image_path = input_path + "/input.png"
-        GPU_NUM = "1"
+        GPU_NUM = "0"
 
         if os.path.exists(input_path):
             shutil.rmtree(input_path)

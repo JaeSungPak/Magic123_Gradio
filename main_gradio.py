@@ -360,11 +360,11 @@ def init_opt(dmtet):
     if dmtet:
         opt.text = "A high-resolution DSLR image of <token>"
         opt.sd_version = '1.5'
-        opt.image = "./input/rgba.png"
-        opt.learned_embeds_path = "./input/learned_embeds.bin"
-        opt.workspace = "out/magic123-nerf-dmtet/magic123_input_nerf_dmtet"
+        opt.image = "./Magic123_Gradio/input/rgba.png"
+        opt.learned_embeds_path = "./Magic123_Gradio/input/learned_embeds.bin"
+        opt.workspace = "Magic123_Gradio/out/magic123-nerf-dmtet/magic123_input_nerf_dmtet"
         opt.dmtet = True
-        opt.init_ckpt = "out/magic123-nerf-coarse/magic123_input_nerf_coarse/checkpoints/magic123_input_nerf_coarse.pth"
+        opt.init_ckpt = "Magic123_Gradio/out/magic123-nerf-coarse/magic123_input_nerf_coarse/checkpoints/magic123_input_nerf_coarse.pth"
         opt.optim = "adam"
         opt.iters = 500
         opt.latent_iter_ratio = 0
@@ -377,9 +377,9 @@ def init_opt(dmtet):
     else:
         opt.text = "A high-resolution DSLR image of <token>"
         opt.sd_version = '1.5'
-        opt.image = "./input/rgba.png"
+        opt.image = "./Magic123_Gradio/input/rgba.png"
         opt.learned_embeds_path = "./input/learned_embeds.bin"
-        opt.workspace = "out/magic123-nerf-coarse/magic123_input_nerf_coarse"
+        opt.workspace = "Magic123_Gradio/out/magic123-nerf-coarse/magic123_input_nerf_coarse"
         opt.optim = "adam"
         opt.iters = 500
         opt.guidance = ['SD', 'zero123']
