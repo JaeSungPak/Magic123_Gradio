@@ -7,7 +7,7 @@ import numpy as np
 import shutil
 import time
 import tqdm
-import Magic123_Gradio/main
+import Magic123_Gradio.main
 
 with gr.Blocks() as demo:
     
