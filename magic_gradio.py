@@ -30,8 +30,7 @@ with gr.Blocks() as demo:
         os.mkdir(input_path)
         input_image.save(image_path)
 
-        cmd = f"python ./Magic123_Gradio/preprocess_image.py --path input"
-        #cmd_2 = f"bash scripts/magic123/run_both_priors.sh {GPU_NUM} nerf dmtet {input_path} 1 1"
+        cmd = f"python Magic123_Gradio/preprocess_image.py --path {image_path}"        #cmd_2 = f"bash scripts/magic123/run_both_priors.sh {GPU_NUM} nerf dmtet {input_path} 1 1"
         try:
             completed_process = subprocess.run(cmd.split(), stdout=subprocess.PIPE)
             print(completed_process.stdout)
