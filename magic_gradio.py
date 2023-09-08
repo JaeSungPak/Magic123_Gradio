@@ -30,13 +30,18 @@ with gr.Blocks() as demo:
         os.mkdir(input_path)
         input_image.save(image_path)
 
-        cmd_1 = f"python Magic123_Gradio/preprocess_image.py --path {image_path}"
-        cmd_2 = f"bash Magic123_Gradio/scripts/magic123/run_both_priors.sh {GPU_NUM} nerf dmtet {input_path} 1 1"
-
+        cmd = f"python ./Magic123_Gradio/preprocess_image.py --path {image_path}"
+        #cmd_2 = f"bash scripts/magic123/run_both_priors.sh {GPU_NUM} nerf dmtet {input_path} 1 1"
         try:
-            completed_process = subprocess.run(cmd_1.split(), stdout=subprocess.PIPE)
-            completed_process = subprocess.run(cmd_2.split(), stdout=subprocess.PIPE)
-            #main.run()
+            completed_process = subprocess.run(cmd.split(), stdout=subprocess.PIPE)
+            print(completed_process.stdout)
+            
+            for i in tqdm.tqdm(range(50), desc="Finished image preprocessing..."):
+                time.sleep(0.01)
+                    
+            #completed_process = subprocess.run(cmd_2.split(), stdout=subprocess.PIPE)
+            main_gradio.run(False)
+            main_gradio.run(True)
             print(completed_process.stdout)
         except subprocess.CalledProcessError as e:
             print(f"Error occurred: {e}")
