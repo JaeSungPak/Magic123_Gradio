@@ -18,7 +18,7 @@ with gr.Blocks() as demo:
     def generate_mesh(input_image, progress=gr.Progress(track_tqdm=True)):
 
         #Modify epoch or save_mesh_path as needed!
-        epoch=1
+        epoch=5
         save_mesh_path = "output/Magic123/"
         save_mesh_name = "mesh.glb"
         input_path = "./Magic123_Gradio/input"
