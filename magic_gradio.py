@@ -7,7 +7,6 @@ import numpy as np
 import shutil
 import time
 import tqdm
-import main_gradio
 import importlib
 
 def reload_package(root_module):
@@ -72,10 +71,14 @@ with gr.Blocks() as demo:
                 time.sleep(0.01)
                     
             #Coarse Stage
+            import main_gradio
             main_gradio.run(dmtet=False, iters=epoch)
             reload_package(main_gradio)
+            
             #Fine Stage
+            import main_gradio
             main_gradio.run(dmtet=True, iters=epoch)
+            reload_package(main_gradio)
             
         except subprocess.CalledProcessError as e:
             print(f"Error occurred: {e}")
