@@ -8,6 +8,7 @@ import shutil
 import time
 import tqdm
 import importlib
+import sys
 
 def reload_package(root_module):
     package_name = root_module.__name__
