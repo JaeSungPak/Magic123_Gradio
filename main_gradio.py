@@ -393,8 +393,11 @@ def init_opt(dmtet, iters=500):
 
     return opt
 
+def generate_mesh(iters=500):
+    main_gradio.run(dmtet=False, iters=iters)
+    main_gradio.run(dmtet=True, iters=iters)
 
-def run(dmtet=True, iters=500):
+def run(dmtet=True, iters):
     args, args_text = _parse_args()
     opt = init_opt(dmtet,iters=iters)
     
