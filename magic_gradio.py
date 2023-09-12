@@ -8,6 +8,7 @@ import shutil
 import time
 import tqdm
 import main_gradio
+import importlib
 
 with gr.Blocks() as demo:
     
@@ -51,6 +52,7 @@ with gr.Blocks() as demo:
                     
             #Coarse Stage
             main_gradio.run(dmtet=False, iters=epoch)
+            importlib.reload(main_gradio)
             #Fine Stage
             main_gradio.run(dmtet=True, iters=epoch)
             
@@ -60,9 +62,9 @@ with gr.Blocks() as demo:
             print(e.stderr)
 
         output_name = f"./Magic123_Gradio/out/magic123-nerf-dmtet/magic123_input_nerf_dmtet/mesh/mesh.glb"
-        shutil.copyfile(output_name, f"{save_mesh_path}/mesh.glb")
+        shutil.copyfile(output_name, f"{save_mesh_path}/{save_mesh_name}")
         
-        return f"{save_mesh_path}/mesh.glb"
+        return f"{save_mesh_path}/{save_mesh_name}"
     
     btn.click(generate_mesh, inputs, outputs)
 
