@@ -7,8 +7,8 @@ import numpy as np
 import shutil
 import time
 import tqdm
-import main_coarse
-import main_fine
+import main_gradio as coarse
+import main_gradio as fine
 
 with gr.Blocks() as demo:
     
@@ -51,9 +51,9 @@ with gr.Blocks() as demo:
                 time.sleep(0.01)
                     
             #Coarse Stage
-            main_coarse.run(dmtet=False, iters=epoch)
+            coarse.run(dmtet=False, iters=epoch)
             #Fine Stage
-            main_fine.run(dmtet=True, iters=epoch)
+            fine.run(dmtet=True, iters=epoch)
             
         except subprocess.CalledProcessError as e:
             print(f"Error occurred: {e}")

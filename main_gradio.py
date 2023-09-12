@@ -11,6 +11,7 @@ import yaml
 from easydict import EasyDict as edict
 import dnnultis
 import logging
+import importlib
 
 logger = logging.getLogger(__name__)
 
@@ -395,6 +396,8 @@ def init_opt(dmtet, iters=500):
 
 
 def run(dmtet=True, iters=500):
+    
+    importlib.reload(nerf.utils)
     args, args_text = _parse_args()
     opt = init_opt(dmtet,iters=iters)
     
