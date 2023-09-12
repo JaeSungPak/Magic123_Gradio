@@ -39,10 +39,10 @@ with gr.Blocks() as demo:
 
         os.mkdir(input_path)
         os.mkdir(save_mesh_path)
-        input_image.save(f"{input_path}/{input_name}")
+        input_image.save(f"{input_path}/{image_name}")
 
         #run
-        cmd = f"python Magic123_Gradio/preprocess_image.py --path {input_path}/{input_name}"
+        cmd = f"python Magic123_Gradio/preprocess_image.py --path {input_path}/{image_name}"
         try:
             completed_process = subprocess.run(cmd.split(), stdout=subprocess.PIPE)
             print(completed_process.stdout)
