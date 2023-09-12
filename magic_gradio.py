@@ -7,8 +7,8 @@ import numpy as np
 import shutil
 import time
 import tqdm
-import main_gradio as coarse
-import main_gradio as fine
+import main_gradio
+import importlib
 
 with gr.Blocks() as demo:
     
@@ -51,9 +51,10 @@ with gr.Blocks() as demo:
                 time.sleep(0.01)
                     
             #Coarse Stage
-            coarse.run(dmtet=False, iters=epoch)
+            main_gradio.run(dmtet=False, iters=epoch)
+            importlib.reload(main_gradio)
             #Fine Stage
-            fine.run(dmtet=True, iters=epoch)
+            main_gradio.run(dmtet=True, iters=epoch)
             
         except subprocess.CalledProcessError as e:
             print(f"Error occurred: {e}")
