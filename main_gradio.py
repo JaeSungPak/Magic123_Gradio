@@ -91,7 +91,7 @@ parser.add_argument('--image', default=None, help="image prompt")
 parser.add_argument('--image_config', default=None, help="image config csv")
 parser.add_argument('--learned_embeds_path', type=str,
                     default=None, help="path to learned embeds of the given image")
-parser.add_argument('--known_iters', type=int, default=1,
+parser.add_argument('--known_iters', type=int, default=100,
                     help="loss scale for alpha entropy")
 parser.add_argument('--known_view_interval', type=int, default=4,
                     help="do reconstruction every X iterations to save on compute")
