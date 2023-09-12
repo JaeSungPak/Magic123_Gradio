@@ -33,7 +33,6 @@ def reload_package(root_module):
         oldmodule.__dict__.update(newmodule.__dict__)
 
 with gr.Blocks() as demo:
-    reload_package(main_gradio)
     inputs = gr.inputs.Image(label="Image", type="pil")
     outputs = gr.Model3D(label="3D Mesh", clear_color=[1.0, 1.0, 1.0, 1.0])
     btn = gr.Button("Generate!")
