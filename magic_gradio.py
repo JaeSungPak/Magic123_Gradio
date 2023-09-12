@@ -36,7 +36,7 @@ with gr.Blocks() as demo:
         os.mkdir(save_mesh_path)
         input_image.save(image_path)
 
-        cmd = f"python Magic123_Gradio/preprocess_image.py --path {image_path}"        #cmd_2 = f"bash scripts/magic123/run_both_priors.sh {GPU_NUM} nerf dmtet {input_path} 1 1"
+        cmd = f"python Magic123_Gradio/preprocess_image.py --path {image_path}"
         try:
             completed_process = subprocess.run(cmd.split(), stdout=subprocess.PIPE)
             print(completed_process.stdout)
@@ -54,7 +54,7 @@ with gr.Blocks() as demo:
             print(e.stderr)
 
         output_name = f"Magic123_Gradio/out/magic123-nerf-dmtet/magic123_input_nerf_dmtet/mesh/mesh.glb"
-        shutil.copytree(output_name, save_mesh_path)
+        shutil.copyfile(output_name, save_mesh_path)
         
         return save_mesh_path
     
