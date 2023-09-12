@@ -45,8 +45,8 @@ with gr.Blocks() as demo:
                 time.sleep(0.01)
                     
             #completed_process = subprocess.run(cmd_2.split(), stdout=subprocess.PIPE)
-            main_gradio.run(False, save_mesh_path=save_mesh_path,iters=100)
-            main_gradio.run(True, save_mesh_path=save_mesh_path,iters=100)
+            main_gradio.run(False, iters=100)
+            main_gradio.run(True, iters=100)
             print(completed_process.stdout)
         except subprocess.CalledProcessError as e:
             print(f"Error occurred: {e}")
@@ -54,9 +54,9 @@ with gr.Blocks() as demo:
             print(e.stderr)
 
         output_name = f"./Magic123_Gradio/out/magic123-nerf-dmtet/magic123_input_nerf_dmtet/mesh/mesh.glb"
-        shutil.copyfile(output_name, save_mesh_path)
+        shutil.copyfile(output_name, f"{save_mesh_path}/mesh.glb")
         
-        return save_mesh_path
+        return f"{save_mesh_path}/mesh.glb"
     
     btn.click(generate_mesh, inputs, outputs)
 

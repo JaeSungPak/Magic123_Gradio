@@ -394,7 +394,7 @@ def init_opt(dmtet, iters=500):
     return opt
 
 
-def run(dmtet=True, save_mesh_path=None, iters=500):
+def run(dmtet=True, iters=500):
     args, args_text = _parse_args()
     opt = init_opt(dmtet,iters=iters)
     
