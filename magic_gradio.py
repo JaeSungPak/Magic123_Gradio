@@ -21,11 +21,11 @@ with gr.Blocks() as demo:
         epoch=5
         save_mesh_path = "output/Magic123/"
         save_mesh_name = "mesh.glb"
-        input_path = "./Magic123_Gradio/input"
-        image_name = "input.png"
 
         #Do not modify output_path
         output_path = "./Magic123_Gradio/out"
+        input_path = "./Magic123_Gradio/input"
+        image_name = "input.png"
 
         #Create the folders needed for processing
         if os.path.exists(input_path):
