@@ -17,7 +17,7 @@ with gr.Blocks() as demo:
     
     def generate_mesh(input_image, progress=gr.Progress(track_tqdm=True)):
 
-        # Modify epoch or save_mesh_path as needed!
+        #Modify epoch or save_mesh_path as needed!
         epoch=5
         save_mesh_path = "output/Magic123/"
         save_mesh_name = "mesh.glb"
@@ -27,6 +27,7 @@ with gr.Blocks() as demo:
         #Do not modify output_path
         output_path = "./Magic123_Gradio/out"
 
+        #Create the folders needed for processing
         if os.path.exists(input_path):
             shutil.rmtree(input_path)
         if os.path.exists(output_path):
@@ -40,6 +41,7 @@ with gr.Blocks() as demo:
         os.mkdir(save_mesh_path)
         input_image.save(image_path)
 
+        #run
         cmd = f"python Magic123_Gradio/preprocess_image.py --path {image_path}"
         try:
             completed_process = subprocess.run(cmd.split(), stdout=subprocess.PIPE)
