@@ -12,6 +12,8 @@ from easydict import EasyDict as edict
 import dnnultis
 import logging
 
+logger = logging.getLogger(__name__)
+
 # The first arg parser parses out only the --config argument, this argument is used to
 # load a yaml file containing key-values that override the defaults for the main parser below
 config_parser = parser = argparse.ArgumentParser(
@@ -394,7 +396,6 @@ def init_opt(dmtet, iters=500):
 
 def run(dmtet=True, iters=500):
     
-    logger = logging.getLogger(__name__)
     args, args_text = _parse_args()
     opt = init_opt(dmtet,iters=iters)
     
