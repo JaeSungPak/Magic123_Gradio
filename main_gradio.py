@@ -347,7 +347,7 @@ def _parse_args():
     args_text = yaml.safe_dump(args.__dict__, default_flow_style=False)
     return args, args_text
 
-def init_opt(dmtet):
+def init_opt(dmtet, iters=500):
     args, args_text = _parse_args()
     opt = edict(vars(args))
 
@@ -366,7 +366,7 @@ def init_opt(dmtet):
         opt.dmtet = True
         opt.init_ckpt = "Magic123_Gradio/out/magic123-nerf-coarse/magic123_input_nerf_coarse/checkpoints/magic123_input_nerf_coarse.pth"
         opt.optim = "adam"
-        opt.iters = 500
+        opt.iters = iters
         opt.latent_iter_ratio = 0
         opt.guidance = ['SD', 'zero123']
         opt.lambda_guidance = [1e-3, 0.01]
@@ -381,7 +381,7 @@ def init_opt(dmtet):
         opt.learned_embeds_path = "./input/learned_embeds.bin"
         opt.workspace = "Magic123_Gradio/out/magic123-nerf-coarse/magic123_input_nerf_coarse"
         opt.optim = "adam"
-        opt.iters = 500
+        opt.iters = iters
         opt.guidance = ['SD', 'zero123']
         opt.lambda_guidance = [1.0, 40]
         opt.guidance_scale = [100, 5]
@@ -394,9 +394,9 @@ def init_opt(dmtet):
     return opt
 
 
-def run(dmtet=True):
+def run(dmtet=True, save_mesh_path=None, iters=500):
     args, args_text = _parse_args()
-    opt = init_opt(dmtet)
+    opt = init_opt(dmtet,iters=iters)
     
     # parameters for image-conditioned generation
     if opt.image is not None or opt.image_config is not None:
@@ -553,6 +553,7 @@ def run(dmtet=True):
         trainer.test(test_loader, write_video=False)
 
         if opt.save_mesh:
+            print("save point 1")
             trainer.save_mesh()
 
     elif opt.test:
@@ -571,6 +572,7 @@ def run(dmtet=True):
             trainer.test(test_loader, shading='normal') # save normal
             if opt.save_mesh:
                 try:
+                    print("save point 2")
                     trainer.save_mesh()
                 except:
                     pass
@@ -659,6 +661,7 @@ def run(dmtet=True):
             trainer.test(test_loader, shading='normal') # save normal
             if opt.save_mesh:
                 try:
+                    print("save point 3")
                     trainer.save_mesh()
                 except:
                     pass

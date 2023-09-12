@@ -20,6 +20,7 @@ with gr.Blocks() as demo:
         input_path = "./Magic123_Gradio/input"
         output_path = "./Magic123_Gradio/out"
         image_path = input_path + "/input.png"
+        save_mesh_path = "output/Magic123/"
         GPU_NUM = "0"
 
         if os.path.exists(input_path):
@@ -39,8 +40,8 @@ with gr.Blocks() as demo:
                 time.sleep(0.01)
                     
             #completed_process = subprocess.run(cmd_2.split(), stdout=subprocess.PIPE)
-            main_gradio.run(False)
-            main_gradio.run(True)
+            main_gradio.run(False, iters=10)
+            main_gradio.run(True, iters=10)
             print(completed_process.stdout)
         except subprocess.CalledProcessError as e:
             print(f"Error occurred: {e}")
