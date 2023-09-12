@@ -397,7 +397,7 @@ def generate_mesh(iters=500):
     main_gradio.run(dmtet=False, iters=iters)
     main_gradio.run(dmtet=True, iters=iters)
 
-def run(dmtet=True, iters):
+def run(dmtet=True, iters=500):
     args, args_text = _parse_args()
     opt = init_opt(dmtet,iters=iters)
     
