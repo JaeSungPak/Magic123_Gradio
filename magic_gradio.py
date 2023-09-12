@@ -7,7 +7,7 @@ import numpy as np
 import shutil
 import time
 import tqdm
-import importlib
+import main_gradio
 
 with gr.Blocks() as demo:
     inputs = gr.inputs.Image(label="Image", type="pil")
@@ -48,7 +48,7 @@ with gr.Blocks() as demo:
             for i in tqdm.tqdm(range(50), desc="Finished image preprocessing..."):
                 time.sleep(0.01)
                     
-            generate_mesh(epoch)
+            main_gradio.generate_mesh(epoch)
             
         except subprocess.CalledProcessError as e:
             print(f"Error occurred: {e}")
