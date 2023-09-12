@@ -25,7 +25,7 @@ def reload_package(root_module):
     # load each of the modules again; 
     # make old modules share state with new modules
     for key in loaded_package_modules:
-        print 'loading %s' % key
+        print('loading %s' % key)
         newmodule = __import__(key)
         oldmodule = loaded_package_modules[key]
         oldmodule.__dict__.clear()
