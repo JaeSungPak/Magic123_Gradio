@@ -27,8 +27,11 @@ with gr.Blocks() as demo:
             shutil.rmtree(input_path)
         if os.path.exists(output_path):
             shutil.rmtree(output_path)
+        if os.path.exists(save_mesh_path):
+            shutil.rmtree(save_mesh_path)
 
         os.mkdir(input_path)
+        os.mkdir(save_mesh_path)
         input_image.save(image_path)
 
         cmd = f"python Magic123_Gradio/preprocess_image.py --path {image_path}"        #cmd_2 = f"bash scripts/magic123/run_both_priors.sh {GPU_NUM} nerf dmtet {input_path} 1 1"
