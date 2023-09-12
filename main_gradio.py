@@ -659,9 +659,6 @@ def run(dmtet=True, save_mesh_path=None, iters=500):
             trainer.test(test_loader, shading='normal') # save normal
             if opt.save_mesh:
                 try:
-                    if opt.dmtet:
-                        trainer.save_mesh(save_mesh_path)
-                    else:
-                        trainer.save_mesh()
+                    trainer.save_mesh()
                 except:
                     pass

@@ -29,6 +29,8 @@ with gr.Blocks() as demo:
             shutil.rmtree(output_path)
         if os.path.exists(save_mesh_path):
             shutil.rmtree(save_mesh_path)
+        if os.path.exists("output") == False:
+            os.mkdir("output")
 
         os.mkdir(input_path)
         os.mkdir(save_mesh_path)
@@ -52,8 +54,10 @@ with gr.Blocks() as demo:
             print(e.stderr)
 
         output_name = f"./Magic123_Gradio/out/magic123-nerf-dmtet/magic123_input_nerf_dmtet/mesh/mesh.glb"
+        shutil.copytree(output_name, save_mesh_path)
+        
         return save_mesh_path
-
+    
     btn.click(generate_mesh, inputs, outputs)
 
 #image = Image.open("./0.png")
