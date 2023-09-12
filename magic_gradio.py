@@ -52,7 +52,7 @@ with gr.Blocks() as demo:
             #Coarse Stage
             main_gradio.run(dmtet=False, iters=epoch)
             #Fine Stage
-            #main_gradio.run(dmtet=True, iters=epoch)
+            main_gradio.run(dmtet=True, iters=epoch)
             
         except subprocess.CalledProcessError as e:
             print(f"Error occurred: {e}")
