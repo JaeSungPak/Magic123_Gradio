@@ -18,7 +18,7 @@ with gr.Blocks() as demo:
     def generate_mesh(input_image, progress=gr.Progress(track_tqdm=True)):
 
         #Modify epoch or save_mesh_path as needed!
-        epoch=5
+        epoch=1
         save_mesh_path = "output/Magic123/"
         save_mesh_name = "mesh.glb"
 
@@ -51,9 +51,9 @@ with gr.Blocks() as demo:
                 time.sleep(0.01)
                     
             #Coarse Stage
-            main_gradio.run(dmtet=False, iters=epoch*100)
+            main_gradio.run(dmtet=False, iters=epoch)
             #Fine Stage
-            main_gradio.run(dmtet=True, iters=epoch*100)
+            main_gradio.run(dmtet=True, iters=epoch)
             print(completed_process.stdout)
             
         except subprocess.CalledProcessError as e:
