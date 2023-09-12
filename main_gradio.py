@@ -10,9 +10,9 @@ from nerf.utils import *
 import yaml
 from easydict import EasyDict as edict
 import dnnultis
-import logging
+from logger import logger
 
-logger = logging.getLogger(__name__)
+#logger = logging.getLogger(__name__)
 
 # The first arg parser parses out only the --config argument, this argument is used to
 # load a yaml file containing key-values that override the defaults for the main parser below
