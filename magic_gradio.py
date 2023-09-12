@@ -16,12 +16,16 @@ with gr.Blocks() as demo:
     btn = gr.Button("Generate!")
     
     def generate_mesh(input_image, progress=gr.Progress(track_tqdm=True)):
-                
-        input_path = "./Magic123_Gradio/input"
-        output_path = "./Magic123_Gradio/out"
-        image_path = input_path + "/input.png"
+
+        # Modify epoch or save_mesh_path as needed!
+        epoch=5
         save_mesh_path = "output/Magic123/"
-        GPU_NUM = "0"
+        save_mesh_name = "mesh.glb"
+        input_path = "./Magic123_Gradio/input"
+        image_path = input_path + "/input.png"
+
+        #Do not modify output_path
+        output_path = "./Magic123_Gradio/out"
 
         if os.path.exists(input_path):
             shutil.rmtree(input_path)
@@ -45,9 +49,9 @@ with gr.Blocks() as demo:
                 time.sleep(0.01)
                     
             #Coarse Stage
-            main_gradio.run(dmtet=False, iters=500)
+            main_gradio.run(dmtet=False, iters=epoch*100)
             #Fine Stage
-            main_gradio.run(dmtet=True, iters=500)
+            main_gradio.run(dmtet=True, iters=epoch*100)
             print(completed_process.stdout)
             
         except subprocess.CalledProcessError as e:
