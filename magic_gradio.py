@@ -73,4 +73,4 @@ with gr.Blocks() as demo:
 #outputs = gr.Model3D(label="3D Mesh", clear_color=[1.0, 1.0, 1.0, 1.0])
 #gr.Interface(generate_mesh, inputs, outputs).launch(share=True)
 
-demo.queue(concurrency_count=20).launch(share=True)
+demo.queue().launch(share=True)
