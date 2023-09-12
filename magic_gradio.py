@@ -44,10 +44,12 @@ with gr.Blocks() as demo:
             for i in tqdm.tqdm(range(50), desc="Finished image preprocessing..."):
                 time.sleep(0.01)
                     
-            #completed_process = subprocess.run(cmd_2.split(), stdout=subprocess.PIPE)
-            main_gradio.run(False, iters=100)
-            main_gradio.run(True, iters=100)
+            #Coarse Stage
+            main_gradio.run(dmtet=False, iters=500)
+            #Fine Stage
+            main_gradio.run(dmtet=True, iters=500)
             print(completed_process.stdout)
+            
         except subprocess.CalledProcessError as e:
             print(f"Error occurred: {e}")
             print(e.stdout)
