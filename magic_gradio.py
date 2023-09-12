@@ -45,7 +45,6 @@ with gr.Blocks() as demo:
         cmd = f"python Magic123_Gradio/preprocess_image.py --path {input_path}/{image_name}"
         try:
             completed_process = subprocess.run(cmd.split(), stdout=subprocess.PIPE)
-            print(completed_process.stdout)
             
             for i in tqdm.tqdm(range(50), desc="Finished image preprocessing..."):
                 time.sleep(0.01)
@@ -54,7 +53,6 @@ with gr.Blocks() as demo:
             main_gradio.run(dmtet=False, iters=epoch)
             #Fine Stage
             main_gradio.run(dmtet=True, iters=epoch)
-            print(completed_process.stdout)
             
         except subprocess.CalledProcessError as e:
             print(f"Error occurred: {e}")
