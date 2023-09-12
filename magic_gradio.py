@@ -53,7 +53,7 @@ with gr.Blocks() as demo:
             print(e.stdout)
             print(e.stderr)
 
-        output_name = f"./Magic123_Gradio/out/magic123-nerf-dmtet/magic123_input_nerf_dmtet/mesh/mesh.glb"
+        output_name = f"Magic123_Gradio/out/magic123-nerf-dmtet/magic123_input_nerf_dmtet/mesh/mesh.glb"
         shutil.copytree(output_name, save_mesh_path)
         
         return save_mesh_path
