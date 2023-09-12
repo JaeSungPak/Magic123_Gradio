@@ -347,7 +347,7 @@ def _parse_args():
     args_text = yaml.safe_dump(args.__dict__, default_flow_style=False)
     return args, args_text
 
-def init_opt(dmtet, iters=500):
+def init_opt(dmtet, iters=500, input_path="./Magic123_Gradio/input"):
     args, args_text = _parse_args()
     opt = edict(vars(args))
 
@@ -360,8 +360,8 @@ def init_opt(dmtet, iters=500):
     if dmtet:
         opt.text = "A high-resolution DSLR image of <token>"
         opt.sd_version = '1.5'
-        opt.image = "./Magic123_Gradio/input/rgba.png"
-        opt.learned_embeds_path = "./Magic123_Gradio/input/learned_embeds.bin"
+        opt.image = "{input_path}/rgba.png"
+        opt.learned_embeds_path = "{input_path}/learned_embeds.bin"
         opt.workspace = "Magic123_Gradio/out/magic123-nerf-dmtet/magic123_input_nerf_dmtet"
         opt.dmtet = True
         opt.init_ckpt = "Magic123_Gradio/out/magic123-nerf-coarse/magic123_input_nerf_coarse/checkpoints/magic123_input_nerf_coarse.pth"
@@ -377,8 +377,8 @@ def init_opt(dmtet, iters=500):
     else:
         opt.text = "A high-resolution DSLR image of <token>"
         opt.sd_version = '1.5'
-        opt.image = "./Magic123_Gradio/input/rgba.png"
-        opt.learned_embeds_path = "./input/learned_embeds.bin"
+        opt.image = "{input_path}/rgba.png"
+        opt.learned_embeds_path = "{input_path}/learned_embeds.bin"
         opt.workspace = "Magic123_Gradio/out/magic123-nerf-coarse/magic123_input_nerf_coarse"
         opt.optim = "adam"
         opt.iters = iters
@@ -394,9 +394,9 @@ def init_opt(dmtet, iters=500):
     return opt
 
 
-def run(dmtet=True, iters=500):
+def run(dmtet=True, iters=500, input_path="./Magic123_Gradio/input"):
     args, args_text = _parse_args()
-    opt = init_opt(dmtet,iters=iters)
+    opt = init_opt(dmtet,iters=iters, input_path=input_path)
     
     # parameters for image-conditioned generation
     if opt.image is not None or opt.image_config is not None:

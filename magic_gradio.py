@@ -21,7 +21,7 @@ with gr.Blocks() as demo:
         epoch=5
         save_mesh_path = "output/Magic123/"
         save_mesh_name = "mesh.glb"
-        input_path = "./Magic123_Gradio/input"
+        input_path = "./input"
         image_name = "input.png"
 
         #Do not modify output_path
@@ -51,9 +51,9 @@ with gr.Blocks() as demo:
                 time.sleep(0.01)
                     
             #Coarse Stage
-            main_gradio.run(dmtet=False, iters=epoch*100)
+            main_gradio.run(dmtet=False, iters=epoch*100, input_path=input_path)
             #Fine Stage
-            main_gradio.run(dmtet=True, iters=epoch*100)
+            main_gradio.run(dmtet=True, iters=epoch*100, input_path=input_path)
             print(completed_process.stdout)
             
         except subprocess.CalledProcessError as e:
