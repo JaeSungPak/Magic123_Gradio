@@ -2,7 +2,7 @@ import os
 import glob
 import tqdm
 import random
-from logger import logger
+import logging
 import gc 
 
 import numpy as np
@@ -29,7 +29,7 @@ from packaging import version as pver
 
 from nerf.clip import CLIP
 from easydict import EasyDict as edict
-#logger = logging.getLogger(__name__)
+logger = logging.getLogger(__name__)
 
 
 class AverageMeters(object):
