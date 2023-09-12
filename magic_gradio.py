@@ -51,9 +51,9 @@ with gr.Blocks() as demo:
                 time.sleep(0.01)
                     
             #Coarse Stage
-            main_gradio.run(dmtet=False, iters=epoch*100)
+            main_gradio.run(dmtet=False, iters=epoch*10)
             #Fine Stage
-            main_gradio.run(dmtet=True, iters=epoch*100)
+            main_gradio.run(dmtet=True, iters=epoch*10)
             print(completed_process.stdout)
             
         except subprocess.CalledProcessError as e:
