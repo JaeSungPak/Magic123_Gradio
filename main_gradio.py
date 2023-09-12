@@ -553,7 +553,6 @@ def run(dmtet=True, save_mesh_path=None, iters=500):
         trainer.test(test_loader, write_video=False)
 
         if opt.save_mesh:
-            print("save point 1")
             trainer.save_mesh()
 
     elif opt.test:
@@ -572,7 +571,6 @@ def run(dmtet=True, save_mesh_path=None, iters=500):
             trainer.test(test_loader, shading='normal') # save normal
             if opt.save_mesh:
                 try:
-                    print("save point 2")
                     trainer.save_mesh()
                 except:
                     pass
@@ -661,7 +659,9 @@ def run(dmtet=True, save_mesh_path=None, iters=500):
             trainer.test(test_loader, shading='normal') # save normal
             if opt.save_mesh:
                 try:
-                    print("save point 3")
-                    trainer.save_mesh()
+                    if opt.dmtet:
+                        trainer.save_mesh(save_mesh_path)
+                    else:
+                        trainer.save_mesh()
                 except:
                     pass
