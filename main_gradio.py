@@ -376,7 +376,7 @@ def init_opt(dmtet, iters=500):
         opt.save_mesh = True
         
         if iters < 100:
-            opt.dataset_size_train = iters
+            opt.dataset_size_train = 1
         else:
             opt.dataset_size_train = 100
     else:
@@ -397,7 +397,7 @@ def init_opt(dmtet, iters=500):
         opt.save_mesh = True
         
         if iters < 100:
-            opt.dataset_size_train = iters
+            opt.dataset_size_train = 1
         else:
             opt.dataset_size_train = 100
 
