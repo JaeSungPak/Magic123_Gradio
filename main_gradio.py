@@ -324,7 +324,7 @@ parser.add_argument('--zero123_ckpt', type=str,
 parser.add_argument('--zero123_grad_scale', type=str, default='angle',
                     help="whether to scale the gradients based on 'angle' or 'None'")
 
-parser.add_argument('--dataset_size_train', type=int, default=100,
+parser.add_argument('--dataset_size_train', type=int, default=1,
                     help="Length of train dataset i.e. # of iterations per epoch")
 parser.add_argument('--dataset_size_valid', type=int, default=8,
                     help="# of frames to render in the turntable video in validation")
