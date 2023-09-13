@@ -331,7 +331,6 @@ parser.add_argument('--dataset_size_valid', type=int, default=8,
 parser.add_argument('--dataset_size_test', type=int, default=100,
                     help="# of frames to render in the turntable video at test time")
 
-
 def _parse_args():
     args_config, remaining = config_parser.parse_known_args()
     if args_config.config:
