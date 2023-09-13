@@ -373,7 +373,12 @@ def init_opt(dmtet, iters=500):
         opt.guidance_scale = [100, 5]
         opt.rm_edge = True
         opt.bg_radius = -1
-        opt.save_mesh = True 
+        opt.save_mesh = True
+        
+        if iters < 100:
+            opt.dataset_size_train = iters
+        else:
+            opt.dataset_size_train = 100
     else:
         opt.text = "A high-resolution DSLR image of <token>"
         opt.sd_version = '1.5'
@@ -390,6 +395,11 @@ def init_opt(dmtet, iters=500):
         opt.t_range = [0.2, 0.6]
         opt.bg_radius = -1
         opt.save_mesh = True
+        
+        if iters < 100:
+            opt.dataset_size_train = iters
+        else:
+            opt.dataset_size_train = 100
 
     return opt
 
