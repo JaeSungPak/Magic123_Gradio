@@ -91,7 +91,7 @@ parser.add_argument('--image', default=None, help="image prompt")
 parser.add_argument('--image_config', default=None, help="image config csv")
 parser.add_argument('--learned_embeds_path', type=str,
                     default=None, help="path to learned embeds of the given image")
-parser.add_argument('--known_iters', type=int, default=1,
+parser.add_argument('--known_iters', type=int, default=100,
                     help="loss scale for alpha entropy")
 parser.add_argument('--known_view_interval', type=int, default=4,
                     help="do reconstruction every X iterations to save on compute")
@@ -324,7 +324,7 @@ parser.add_argument('--zero123_ckpt', type=str,
 parser.add_argument('--zero123_grad_scale', type=str, default='angle',
                     help="whether to scale the gradients based on 'angle' or 'None'")
 
-parser.add_argument('--dataset_size_train', type=int, default=1,
+parser.add_argument('--dataset_size_train', type=int, default=100,
                     help="Length of train dataset i.e. # of iterations per epoch")
 parser.add_argument('--dataset_size_valid', type=int, default=8,
                     help="# of frames to render in the turntable video in validation")
