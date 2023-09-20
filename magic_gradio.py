@@ -24,8 +24,8 @@ with gr.Blocks() as demo:
         save_mesh_name = f"mesh_{pid}.glb"
 
         #Do not modify output_path
-        output_path = f"./Magic123_Gradio/out/{pid}/"
-        input_path = f"./Magic123_Gradio/input/{pid}/"
+        output_path = f"./Magic123_Gradio/out/{pid}"
+        input_path = f"./Magic123_Gradio/input/{pid}"
         image_name = "input.png"
 
         #Create the folders needed for processing
