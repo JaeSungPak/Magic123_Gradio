@@ -39,7 +39,6 @@ with gr.Blocks() as demo:
             os.mkdir(save_mesh_path)
 
         os.mkdir(input_path)
-        os.mkdir(save_mesh_path)
         input_image.save(f"{input_path}/{image_name}")
 
         #run
