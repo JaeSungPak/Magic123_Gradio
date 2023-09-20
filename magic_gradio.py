@@ -24,8 +24,8 @@ with gr.Blocks() as demo:
         save_mesh_name = f"mesh_{pid}.glb"
 
         #Do not modify output_path
-        output_path = f"./Magic123_Gradio/out_{pid}"
-        input_path = f"./Magic123_Gradio/input_{pid}"
+        output_path = f"./Magic123_Gradio/out/{pid}"
+        input_path = f"./Magic123_Gradio/input/{pid}"
         image_name = "input.png"
 
         #Create the folders needed for processing
@@ -53,7 +53,7 @@ with gr.Blocks() as demo:
             print(e.stdout)
             print(e.stderr)
 
-        output_name = f"./Magic123_Gradio/out_{pid}/magic123-nerf-dmtet/magic123_input_nerf_dmtet/mesh/mesh.glb"
+        output_name = f"./Magic123_Gradio/out/{pid}/magic123-nerf-dmtet/magic123_input_nerf_dmtet/mesh/mesh.glb"
         shutil.copyfile(output_name, f"{save_mesh_path}/{save_mesh_name}")
         
         shutil.rmtree(input_path)
