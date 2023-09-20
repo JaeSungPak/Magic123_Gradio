@@ -403,8 +403,8 @@ def init_opt(dmtet, iters=500, pid=""):
     return opt
 
 def generate_mesh(iters=500, pid=""):
-    run(dmtet=False, iters=iters)
-    run(dmtet=True, iters=iters)
+    run(dmtet=False, iters=iters, pid=pid)
+    run(dmtet=True, iters=iters, pid=pid)
 
 def run(dmtet=True, iters=500, pid=""):
     args, args_text = _parse_args()
