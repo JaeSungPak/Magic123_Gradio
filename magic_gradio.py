@@ -20,8 +20,8 @@ with gr.Blocks() as demo:
         #Modify epoch or save_mesh_path as needed!
         epoch=1
         pid = (datetime.now().strftime('%m%d_%H%M%S%f'))[:-4]
-        save_mesh_path = "output/Magic123/"
-        save_mesh_name = f"mesh_{pid}.glb"
+        save_mesh_path = f"output/Magic123/{pid}/"
+        save_mesh_name = "mesh.glb"
 
         #Do not modify output_path
         output_path = f"./Magic123_Gradio/out/{pid}"
@@ -39,6 +39,7 @@ with gr.Blocks() as demo:
             os.mkdir(save_mesh_path)
 
         os.mkdir(input_path)
+        os.mkdir(save_mesh_path)
         input_image.save(f"{input_path}/{image_name}")
 
         #run

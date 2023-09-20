@@ -347,7 +347,7 @@ def _parse_args():
     args_text = yaml.safe_dump(args.__dict__, default_flow_style=False)
     return args, args_text
 
-def init_opt(dmtet, iters=500):
+def init_opt(dmtet, iters=500, pid=""):
     args, args_text = _parse_args()
     opt = edict(vars(args))
 
@@ -356,15 +356,15 @@ def init_opt(dmtet, iters=500):
 
     opt.images, opt.ref_radii, opt.ref_polars, opt.ref_azimuths, opt.zero123_ws = [], [], [], [], []
     opt.default_zero123_w = 1
+    opt.image = f"./Magic123_Gradio/input/{pid}/rgba.png"
     
     if dmtet:
         opt.text = "A high-resolution DSLR image of <token>"
         opt.sd_version = '1.5'
-        opt.image = "./Magic123_Gradio/input/rgba.png"
-        opt.learned_embeds_path = "./Magic123_Gradio/input/learned_embeds.bin"
-        opt.workspace = "Magic123_Gradio/out/magic123-nerf-dmtet/magic123_input_nerf_dmtet"
+        opt.learned_embeds_path = "./Magic123_Gradio/input/{pid}/learned_embeds.bin"
+        opt.workspace = f"Magic123_Gradio/out/{pid}/magic123-nerf-dmtet/magic123_input_nerf_dmtet"
         opt.dmtet = True
-        opt.init_ckpt = "Magic123_Gradio/out/magic123-nerf-coarse/magic123_input_nerf_coarse/checkpoints/magic123_input_nerf_coarse.pth"
+        opt.init_ckpt = f"Magic123_Gradio/out/{pid}/magic123-nerf-coarse/magic123_input_nerf_coarse/checkpoints/magic123_input_nerf_coarse.pth"
         opt.optim = "adam"
         opt.iters = iters
         opt.latent_iter_ratio = 0
@@ -382,9 +382,8 @@ def init_opt(dmtet, iters=500):
     else:
         opt.text = "A high-resolution DSLR image of <token>"
         opt.sd_version = '1.5'
-        opt.image = "./Magic123_Gradio/input/rgba.png"
-        opt.learned_embeds_path = "./input/learned_embeds.bin"
-        opt.workspace = "Magic123_Gradio/out/magic123-nerf-coarse/magic123_input_nerf_coarse"
+        opt.learned_embeds_path = f"./input/{pid}/learned_embeds.bin"
+        opt.workspace = f"Magic123_Gradio/out/{pid}/magic123-nerf-coarse/magic123_input_nerf_coarse"
         opt.optim = "adam"
         opt.iters = iters
         opt.guidance = ['SD', 'zero123']
@@ -403,13 +402,13 @@ def init_opt(dmtet, iters=500):
 
     return opt
 
-def generate_mesh(iters=500):
+def generate_mesh(iters=500, pid=""):
     run(dmtet=False, iters=iters)
     run(dmtet=True, iters=iters)
 
-def run(dmtet=True, iters=500):
+def run(dmtet=True, iters=500, pid=""):
     args, args_text = _parse_args()
-    opt = init_opt(dmtet,iters=iters)
+    opt = init_opt(dmtet, iters=iters, pid="")
     
     # parameters for image-conditioned generation
     if opt.image is not None or opt.image_config is not None:
