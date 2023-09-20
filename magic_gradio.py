@@ -24,18 +24,20 @@ with gr.Blocks() as demo:
         save_mesh_name = f"mesh_{pid}.glb"
 
         #Do not modify output_path
-        output_path = f"./Magic123_Gradio/out/{pid}"
-        input_path = f"./Magic123_Gradio/input/{pid}"
+        output_path = f"./Magic123_Gradio/out/{pid}/"
+        input_path = f"./Magic123_Gradio/input/{pid}/"
         image_name = "input.png"
 
         #Create the folders needed for processing
         if os.path.exists(save_mesh_path):
             shutil.rmtree(save_mesh_path)
-        if os.path.exists("output") == False:
+        if not os.path.exists("output"):
             os.mkdir("output")
-
-        os.mkdir(input_path)
-        os.mkdir(save_mesh_path)
+        if not os.path.exists("./Magic123_Gradio/input"):
+            os.mkdir("./Magic123_Gradio/input")
+        if not os.path.exists(save_mesh_path):
+            os.mkdir(save_mesh_path)
+            
         input_image.save(f"{input_path}/{image_name}")
 
         #run
