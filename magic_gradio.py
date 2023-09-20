@@ -33,6 +33,8 @@ with gr.Blocks() as demo:
             shutil.rmtree(save_mesh_path)
         if not os.path.exists("output"):
             os.mkdir("output")
+        if not os.path.exists("output/Magic123"):
+            os.mkdir("output/Magic123")
         if not os.path.exists("./Magic123_Gradio/input"):
             os.mkdir("./Magic123_Gradio/input")
         if not os.path.exists(save_mesh_path):
@@ -55,6 +57,13 @@ with gr.Blocks() as demo:
             print(f"Error occurred: {e}")
             print(e.stdout)
             print(e.stderr)
+            
+            if os.path.exists(input_path):
+                shutil.rmtree(input_path)
+            if os.path.exists(output_path):
+                shutil.rmtree(output_path)
+            if os.path.exists(save_mesh_path):
+                shutil.rmtree(save_mesh_path)
 
         output_name = f"./Magic123_Gradio/out/{pid}/magic123-nerf-dmtet/magic123_input_nerf_dmtet/mesh/mesh.glb"
         shutil.copyfile(output_name, f"{save_mesh_path}/{save_mesh_name}")
