@@ -8,6 +8,7 @@ import shutil
 import time
 import tqdm
 import main_gradio
+from datetime import datetime
 
 with gr.Blocks() as demo:
     inputs = gr.inputs.Image(label="Image", type="pil")
@@ -18,19 +19,16 @@ with gr.Blocks() as demo:
 
         #Modify epoch or save_mesh_path as needed!
         epoch=1
+        pid = (datetime.now().strftime('%m%d_%H%M%S%f'))[:-4]
         save_mesh_path = "output/Magic123/"
-        save_mesh_name = "mesh.glb"
+        save_mesh_name = f"mesh_{pid}.glb"
 
         #Do not modify output_path
-        output_path = "./Magic123_Gradio/out"
-        input_path = "./Magic123_Gradio/input"
+        output_path = f"./Magic123_Gradio/out_{pid}"
+        input_path = f"./Magic123_Gradio/input_{pid}"
         image_name = "input.png"
 
         #Create the folders needed for processing
-        if os.path.exists(input_path):
-            shutil.rmtree(input_path)
-        if os.path.exists(output_path):
-            shutil.rmtree(output_path)
         if os.path.exists(save_mesh_path):
             shutil.rmtree(save_mesh_path)
         if os.path.exists("output") == False:
@@ -55,8 +53,11 @@ with gr.Blocks() as demo:
             print(e.stdout)
             print(e.stderr)
 
-        output_name = f"./Magic123_Gradio/out/magic123-nerf-dmtet/magic123_input_nerf_dmtet/mesh/mesh.glb"
+        output_name = f"./Magic123_Gradio/out_{pid}/magic123-nerf-dmtet/magic123_input_nerf_dmtet/mesh/mesh.glb"
         shutil.copyfile(output_name, f"{save_mesh_path}/{save_mesh_name}")
+        
+        shutil.rmtree(input_path)
+        shutil.rmtree(output_path)
         
         return f"{save_mesh_path}/{save_mesh_name}"
     
