@@ -408,7 +408,7 @@ def generate_mesh(iters=500, pid=""):
 
 def run(dmtet=True, iters=500, pid=""):
     args, args_text = _parse_args()
-    opt = init_opt(dmtet, iters=iters, pid="")
+    opt = init_opt(dmtet, iters=iters, pid=pid)
     
     # parameters for image-conditioned generation
     if opt.image is not None or opt.image_config is not None:
