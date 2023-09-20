@@ -37,7 +37,8 @@ with gr.Blocks() as demo:
             os.mkdir("./Magic123_Gradio/input")
         if not os.path.exists(save_mesh_path):
             os.mkdir(save_mesh_path)
-            
+
+        os.mkdir(input_path)
         input_image.save(f"{input_path}/{image_name}")
 
         #run
