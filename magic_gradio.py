@@ -49,7 +49,7 @@ with gr.Blocks() as demo:
             for i in tqdm.tqdm(range(50), desc="Finished image preprocessing..."):
                 time.sleep(0.01)
                     
-            main_gradio.generate_mesh(epoch)
+            main_gradio.generate_mesh(epoch, pid)
             
         except subprocess.CalledProcessError as e:
             print(f"Error occurred: {e}")
